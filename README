@@ -1,0 +1,17 @@
+These simulations were run on "Ubuntu 22.04.1 LTS" using C and MATLAB codes.
+"bmp_to_nv2_geo_maker.m" can be used to create geometry files to be used in the C code, using the .bmp images
+
+1. run the code using "gcc Fabbri_Ni.c -lm; OMP_NUM_THREADS=8 ./a.out" in a terminal (optimal OMP_NUM_THREADS count varies by system hardware)
+2. the output is in the form of a MATLAB variable stored in the folder "matlab_variable_output"
+3. load the variable into MATLAB
+4. enter the following in the MATLAB command window "eval(E_combining_string);"
+5. enter the following in the MATLAB command window "E = squeeze(E(3:end-1,3:end-1,3:end-1,:));"
+6. the results can be animated using:
+
+for i = 1:size(E,3)
+    imagesc(E(:,:,i))
+    caxis([-80,20])
+    colorbar
+    pause(0.1)
+end
+
